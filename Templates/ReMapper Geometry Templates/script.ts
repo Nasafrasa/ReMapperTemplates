@@ -54,6 +54,13 @@ scene.addPrimaryGroups(
     _color: [0, 0, 0],
   }),
 );
+scene.addPrimaryGroups(
+  "Cylinder",
+  new Geometry(GEO_TYPE.CYLINDER, {
+    _shader: GEO_SHADER.STANDARD,
+    _color: [0, 0, 0],
+  }),
+);
 
 // When we want to make the environment, we call either this function or that "static" function
 scene.animate([
