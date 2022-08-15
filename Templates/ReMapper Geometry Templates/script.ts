@@ -1,4 +1,4 @@
-import { Difficulty, ModelScene, GEO_TYPE, GEO_SHADER, Geometry } from "https://deno.land/x/remapper@2.0.1/src/mod.ts"
+import { Difficulty, ModelScene, GEO_TYPE, GEO_SHADER, Geometry, ENV, LOOKUP } from "https://deno.land/x/remapper@2.0.2/src/mod.ts"
 
 const map = new Difficulty("ExpertPlusLawless.dat", "ExpertPlusStandard.dat");
 const scene = new ModelScene(new Geometry()); // This creates a new envrionment using geometry
@@ -60,6 +60,15 @@ scene.addPrimaryGroups(
     _shader: GEO_SHADER.STANDARD,
     _color: [0, 0, 0],
   }),
+);
+
+// This material only works if you are using the BTS environment, if you are not using BTS, delete the addPrimaryGroups function below
+
+scene.addPrimaryGroups(
+  "BTSClouds",
+  new Environment(ENV.BTS.HIGH_CLOUDS.ID, LOOKUP.REGEX),
+  ENV.BTS.HIGH_CLOUDS.SCALE,
+  ENV.BTS.HIGH_CLOUDS.ANCHOR,
 );
 
 // When we want to make the environment, we call either this function or that "static" function
