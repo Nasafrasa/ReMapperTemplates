@@ -1,4 +1,4 @@
-import { Difficulty, ModelScene, GEO_TYPE, GEO_SHADER, Geometry, ENV, LOOKUP } from "https://deno.land/x/remapper@2.0.2/src/mod.ts"
+import { Difficulty, ModelScene, GEO_TYPE, GEO_SHADER, Geometry, ENV, LOOKUP, Environment } from "https://deno.land/x/remapper@2.0.2/src/mod.ts"
 
 const map = new Difficulty("ExpertPlusLawless.dat", "ExpertPlusStandard.dat");
 const scene = new ModelScene(new Geometry()); // This creates a new envrionment using geometry
