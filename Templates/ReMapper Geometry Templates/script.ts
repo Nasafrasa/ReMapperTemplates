@@ -1,4 +1,4 @@
-import { Difficulty, ModelScene, GEO_TYPE, GEO_SHADER, Geometry, ENV, LOOKUP, Environment } from "https://deno.land/x/remapper@2.0.2/src/mod.ts"
+import { Difficulty, ModelScene, Geometry, ENV, Environment } from "https://deno.land/x/remapper@2.1.0/src/mod.ts"
 
 const map = new Difficulty("ExpertPlusLawless.dat", "ExpertPlusStandard.dat");
 const scene = new ModelScene(new Geometry()); // This creates a new envrionment using geometry
@@ -10,8 +10,8 @@ const scene = new ModelScene(new Geometry()); // This creates a new envrionment 
 
 scene.addPrimaryGroups(
   "Cube", // Material Name
-  new Geometry(GEO_TYPE.CUBE, { // What geometry object type we want to use
-    _shader: GEO_SHADER.STANDARD, // The shader of the material
+  new Geometry("Cube", { // What geometry object type we want to use
+    _shader: "Standard", // The shader of the material
     _color: [0, 0, 0], // The color of the material
     // Other properties can also go here
   }),
@@ -21,43 +21,43 @@ scene.addPrimaryGroups(
 
 scene.addPrimaryGroups(
   "Triangle",
-  new Geometry(GEO_TYPE.TRIANGLE, { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING THE PLAYER
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Triangle", { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING THE PLAYER
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
 scene.addPrimaryGroups(
   "Capsule",
-  new Geometry(GEO_TYPE.CAPSULE, {
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Capsule", {
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
 scene.addPrimaryGroups(
   "Plane",
-  new Geometry(GEO_TYPE.PLANE, { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING UPWARDS
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Plane", { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING UPWARDS
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
 scene.addPrimaryGroups(
   "Quad",
-  new Geometry(GEO_TYPE.QUAD, { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING THE PLAYER
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Quad", { // !!! THIS SHAPE IS ONE DIRECTIONAL, THE VISIBLE SIDE IS FACING THE PLAYER
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
 scene.addPrimaryGroups(
   "Sphere",
-  new Geometry(GEO_TYPE.SPHERE, {
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Sphere", {
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
 scene.addPrimaryGroups(
   "Cylinder",
-  new Geometry(GEO_TYPE.CYLINDER, {
-    _shader: GEO_SHADER.STANDARD,
+  new Geometry("Cylinder", {
+    _shader: "Standard",
     _color: [0, 0, 0],
   }),
 );
@@ -66,7 +66,7 @@ scene.addPrimaryGroups(
 
 scene.addPrimaryGroups(
   "BTSClouds",
-  new Environment(ENV.BTS.HIGH_CLOUDS.ID, LOOKUP.REGEX),
+  new Environment(ENV.BTS.HIGH_CLOUDS.ID, "Regex"),
   ENV.BTS.HIGH_CLOUDS.SCALE,
   ENV.BTS.HIGH_CLOUDS.ANCHOR,
 );
@@ -76,10 +76,10 @@ scene.animate([
     ["template", 0], // Put the name of your .rmmodel file here and time you want it to show up, more detail on Swifter's Gtihub
 ]);
 
+
 // !!! Make sure NOT to copy and paste the base objects in the template file, instead use Shift+D to duplicate the object. 
 // !!! If you don't do that Blender will make a new material for the copy and pasted version, using duplication keeps the same material
 
 // ! Also make sure to disable the `Template Objects` collection in Blender, you don't want to see those
-
 
 map.save();
